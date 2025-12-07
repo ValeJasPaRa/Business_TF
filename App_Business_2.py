@@ -157,9 +157,12 @@ if st.button("🔮 Predecir Calidad de Sueño"):
     st.success(f"✅ **Calidad de Sueño Predicha:** {prediction_text}")
 
     st.subheader("📊 Probabilidades por Clase")
+    
+    class_labels = [sleep_quality_map[c] for c in xgb.classes_]
+
     proba_df = pd.DataFrame(
         probabilities,
-        columns=xgb.classes_
+        columns=class_labels
     )
     st.dataframe(proba_df)
 
